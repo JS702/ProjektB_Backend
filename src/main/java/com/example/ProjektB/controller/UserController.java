@@ -19,19 +19,10 @@ public class UserController {
         return this.userService.getUser(userId);
     }
 
-    @PostMapping(path = "/create", consumes = "application/x-www-form-urlencoded")
-    public User create(User user) {
+    @PostMapping(path = "/create")
+    public User create(@RequestBody User user) {
         System.out.println("User:" + user.toString());
-        return this.userService.saveUser(user);
+        return this.userService.createUser(user, UserType.USER);
     }
-
-    /*
-     * 
-     * @PostMapping( "/create/admin" )
-     * public User createAdmin( @RequestBody User user ){
-     * //Todo checken ob requestingUser admin ist
-     * return this.userService.createUser( user, UserType.INTERN );
-     * }
-     */
 
 }
