@@ -26,7 +26,6 @@ public class DefaultUserService {
     }
 
     public User createUser(final User user, final UserType type) {
-        // TODO hash Password
         user.setType(type);
         return saveUser(user);
     }

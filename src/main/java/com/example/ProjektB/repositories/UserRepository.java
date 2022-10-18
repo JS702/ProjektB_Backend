@@ -10,12 +10,14 @@ import java.util.stream.Stream;
 
 public interface UserRepository extends MongoRepository<User, String> {
 
-    User findByEmail( String email );
+    User findByEmail(String email);
 
-    @Query( "{ _id: { $in: ?0 } }" )
-    List<User> findByIds( Set<String> ids );
+    User findByUsername(String username);
 
-    @Query( "{ $or:[ {deleted:false}, {deleted:true} ] }" )
+    @Query("{ _id: { $in: ?0 } }")
+    List<User> findByIds(Set<String> ids);
+
+    @Query("{ $or:[ {deleted:false}, {deleted:true} ] }")
     Stream<User> findAllAsStream();
 
 }
