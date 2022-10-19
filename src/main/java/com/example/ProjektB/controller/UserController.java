@@ -19,6 +19,11 @@ public class UserController {
         return this.userService.getUser(userId);
     }
 
+    @GetMapping("/abc")
+    public String abc(@PathVariable String userId) {
+        return "abc";
+    }
+
     @PutMapping("/create")
     public User create(@RequestBody User user) {
         System.out.println("User:" + user.toString());

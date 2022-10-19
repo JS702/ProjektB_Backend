@@ -1,6 +1,7 @@
 package com.example.ProjektB.domainobject;
 
 import com.example.ProjektB.domainvalue.UserType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
@@ -16,6 +17,7 @@ public class User extends DefaultObject {
 
     private String email;
 
+    @JsonIgnore
     private String password;
 
     private String username;

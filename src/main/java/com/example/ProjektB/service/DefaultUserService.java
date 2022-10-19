@@ -7,6 +7,7 @@ import com.example.ProjektB.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Service;
 public class DefaultUserService {
 
     private final UserRepository userRepo;
+
+    private final PasswordEncoder passwordEncoder;
 
     public User getUser(final String userId) {
         System.out.println("Looking for user: " + userId);
@@ -26,7 +29,17 @@ public class DefaultUserService {
     }
 
     public User createUser(final User user, final UserType type) {
+
+        if (this.userRepo.findByEmail(user.getEmail()) != null) {
+            throw new IllegalStateException("Email is already taken!");
+        }
+
+        if (this.userRepo.findByUsername(user.getUsername()) != null) {
+            throw new IllegalStateException("Username is already taken!");
+        }
+
         user.setType(type);
+        user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         return saveUser(user);
     }
 
