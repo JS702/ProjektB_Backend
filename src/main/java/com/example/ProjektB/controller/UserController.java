@@ -19,7 +19,7 @@ public class UserController {
         return this.userService.getUser(userId);
     }
 
-    @PostMapping(path = "/create")
+    @PutMapping("/create")
     public User create(@RequestBody User user) {
         System.out.println("User:" + user.toString());
         return this.userService.createUser(user, UserType.USER);
