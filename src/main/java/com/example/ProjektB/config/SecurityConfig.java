@@ -60,11 +60,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/admin").hasRole(UserType.ADMIN.toString())
+                .antMatchers("/admin").hasAuthority(UserType.ADMIN.toString())
                 // Public Routen
                 .antMatchers("/user/create", "/login").permitAll()
                 // User,Admin Routen
-                .antMatchers("/user/**").hasAnyRole(UserType.USER.toString(), UserType.ADMIN.toString())
+                .antMatchers("/user/**").hasAnyAuthority(UserType.USER.toString(), UserType.ADMIN.toString())
                 .anyRequest()
                 .authenticated();
 

@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping("/abc")
-    public String abc(@PathVariable String userId) {
+    public String abc() {
         return "abc";
     }
 

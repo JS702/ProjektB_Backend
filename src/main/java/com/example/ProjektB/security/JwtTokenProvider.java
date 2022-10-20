@@ -26,12 +26,12 @@ public class JwtTokenProvider {
     @Value("${app.jwt.secret}")
     private String jwtSecret;
 
-    public String generateToken(String userEmail) {
+    public String generateToken(String username) {
         Instant now = Instant.now();
         Instant expiration = now.plus(7, ChronoUnit.DAYS);
 
         return Jwts.builder()
-                .setSubject(userEmail)
+                .setSubject(username)
                 .setIssuedAt(Date.from(now))
                 .setExpiration(Date.from(expiration))
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
@@ -43,7 +43,7 @@ public class JwtTokenProvider {
         return generateToken(userDetails.getUsername());
     }
 
-    public String getUserFromToken(String token) {
+    public String getUserNameFromToken(String token) {
         Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
 
         return claims.getSubject();
