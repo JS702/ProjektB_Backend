@@ -1,5 +1,6 @@
 package com.example.ProjektB.service;
 
+import com.example.ProjektB.domainobject.RegistrationData;
 import com.example.ProjektB.domainobject.User;
 import com.example.ProjektB.domainvalue.UserType;
 import com.example.ProjektB.exception.NotFoundException;
@@ -28,18 +29,19 @@ public class DefaultUserService {
         return user;
     }
 
-    public User createUser(final User user, final UserType type) {
+    public User createUser(final RegistrationData userData, final UserType type) {
 
-        if (this.userRepo.findByEmail(user.getEmail()) != null) {
+        if (this.userRepo.findByEmail(userData.getEmail()) != null) {
             throw new IllegalStateException("Email is already taken!");
         }
 
-        if (this.userRepo.findByUsername(user.getUsername()) != null) {
+        if (this.userRepo.findByUsername(userData.getUsername()) != null) {
             throw new IllegalStateException("Username is already taken!");
         }
+        User user = new User();
 
         user.setType(type);
-        user.setPassword(this.passwordEncoder.encode(user.getPassword()));
+        user.setPassword(this.passwordEncoder.encode(userData.getPassword()));
         return saveUser(user);
     }
 

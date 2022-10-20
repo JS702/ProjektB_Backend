@@ -1,5 +1,6 @@
 package com.example.ProjektB.controller;
 
+import com.example.ProjektB.domainobject.RegistrationData;
 import com.example.ProjektB.domainobject.User;
 import com.example.ProjektB.domainvalue.UserType;
 import com.example.ProjektB.service.DefaultUserService;
@@ -25,9 +26,8 @@ public class UserController {
     }
 
     @PutMapping("/create")
-    public User create(@RequestBody User user) {
-        System.out.println("User:" + user.toString());
-        return this.userService.createUser(user, UserType.USER);
+    public User create(@RequestBody RegistrationData userData) {
+        return this.userService.createUser(userData, UserType.USER);
     }
 
 }
