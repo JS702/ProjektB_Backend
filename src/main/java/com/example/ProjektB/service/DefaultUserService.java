@@ -21,8 +21,14 @@ public class DefaultUserService {
     private final PasswordEncoder passwordEncoder;
 
     public User getUser(final String userId) {
-        System.out.println("Looking for user: " + userId);
+        log.info("Looking for user: {}", userId);
         final User user = this.userRepo.findById(userId).orElseThrow(NotFoundException::new);
+        return user;
+    }
+
+    public User getUserByUsername(final String username) {
+        log.info("Looking for user: {}", username);
+        final User user = this.userRepo.findByUsername(username);
         if (user == null) {
             throw new NotFoundException();
         }

@@ -8,7 +8,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.ProjektB.domainobject.AuthRequest;
+import com.example.ProjektB.mapper.UserMapper;
+import com.example.ProjektB.pojo.UserDto;
 import com.example.ProjektB.security.JwtTokenProvider;
+import com.example.ProjektB.service.DefaultUserService;
 
 @RestController
 @RequestMapping(value = "/login")
@@ -21,10 +24,19 @@ public class LoginController {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
+    @Autowired
+    private DefaultUserService userService;
+
+    @Autowired
+    private UserMapper userMapper;
+
     @PostMapping
-    public String login(@RequestBody AuthRequest authRequest) {
+    public UserDto login(@RequestBody AuthRequest authRequest) {
         Authentication authentication = this.authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
-        return jwtTokenProvider.generateToken(authentication);
+
+        UserDto user = this.userMapper.mapToDto(this.userService.getUserByUsername(authRequest.username));
+        user.setJwtToken(jwtTokenProvider.generateToken(authentication));
+        return user;
     }
 }
