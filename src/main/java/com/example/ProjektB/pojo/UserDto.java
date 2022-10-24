@@ -1,7 +1,6 @@
 package com.example.ProjektB.pojo;
 
 import com.example.ProjektB.domainvalue.UserType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -10,10 +9,9 @@ public class UserDto {
 
     private String id;
 
-    private String email;
+    private boolean deleted;
 
-    @JsonIgnore
-    private String password;
+    private String email;
 
     private String username;
 
