@@ -28,4 +28,6 @@ public class User {
 
     private UserType type;
 
+    private String description;
+
 }

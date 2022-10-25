@@ -18,4 +18,7 @@ public class UserDto {
     private UserType type;
 
     private String jwtToken;
+
+    private String description;
+
 }
