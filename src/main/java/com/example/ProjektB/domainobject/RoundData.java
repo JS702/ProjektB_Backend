@@ -1,25 +1,22 @@
 package com.example.ProjektB.domainobject;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import lombok.Data;
+
+@Data
+@Document(collection = "round")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class RoundData {
 
-    private String picturePath;
+    @Id
+    private String id;
+
+    private String pictureName;
 
     private Position position;
-
-    public void setPicturePath(String picturePath) {
-        this.picturePath = picturePath;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
-    public String getPicturePath() {
-        return picturePath;
-    }
-
-    public Position getPosition() {
-        return position;
-    }
 
 }
