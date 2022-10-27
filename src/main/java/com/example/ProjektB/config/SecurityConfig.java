@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // Public Routen
                 .antMatchers("/user/create", "/login").permitAll()
                 // User,Admin Routen
-                .antMatchers("/user/**").hasAnyAuthority(UserType.USER.toString(), UserType.ADMIN.toString())
+                .antMatchers("/user/**", "/game/**").hasAnyAuthority(UserType.USER.toString(), UserType.ADMIN.toString())
                 .anyRequest()
                 .authenticated();
 
