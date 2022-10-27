@@ -28,7 +28,7 @@ public class GameController {
 
         int rounds = 5;
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i <= 5; i++) {
             picturePaths.add("src\\main\\resources\\images\\" + i + ".png");
         }
 
@@ -42,13 +42,13 @@ public class GameController {
 
         GameDto gameDto = new GameDto();
         
-        for (int i = 0; i < rounds; i++) {
+        for (int j = 0; j <= rounds; j++) {
             RoundData roundData = new RoundData();
 
             int randomInt = ThreadLocalRandom.current().nextInt(0, picturePaths.size());
 
-            roundData.setPicturePath(picturePaths.get(randomInt));
-            roundData.setPosition(positions.get(randomInt));
+            roundData.setPicturePath(picturePaths.remove(randomInt));
+            roundData.setPosition(positions.remove(randomInt));
 
             gameDto.addRoundDataToList(roundData);
         }
