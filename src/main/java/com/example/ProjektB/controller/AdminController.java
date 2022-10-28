@@ -1,7 +1,7 @@
 package com.example.ProjektB.controller;
 
 import com.example.ProjektB.domainobject.RoundData;
-import com.example.ProjektB.service.GameService;
+import com.example.ProjektB.service.RoundDataService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AdminController {
 
-    private final GameService gameService;
+    private final RoundDataService gameService;
 
     @PutMapping("/round_data")
     public RoundData login(@RequestBody RoundData roundData) {

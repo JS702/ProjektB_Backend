@@ -2,6 +2,8 @@ package com.example.ProjektB.repositories;
 
 import com.example.ProjektB.domainobject.Position;
 import com.example.ProjektB.domainobject.RoundData;
+import com.example.ProjektB.domainvalue.RoundType;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
@@ -17,6 +19,6 @@ public interface RoundRepository extends MongoRepository<RoundData, String> {
 
     RoundData findByPosition(Position position);
 
-    List<RoundData> getAll();
+    List<RoundData> findByType(RoundType type);
 
 }

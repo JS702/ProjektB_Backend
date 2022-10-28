@@ -1,8 +1,10 @@
 package com.example.ProjektB.controller;
 
-import com.example.ProjektB.pojo.GameDto;
-import com.example.ProjektB.service.GameService;
+import com.example.ProjektB.domainobject.RoundData;
+import com.example.ProjektB.service.RoundDataService;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +14,10 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class GameController {
 
-    private final GameService gameService;
+    private final RoundDataService gameService;
 
     @GetMapping
-    public GameDto getGameDto(@RequestParam int rounds) {
-        return gameService.createRoundDataTest(rounds);
+    public List<RoundData> getGameDto(@RequestParam int rounds) {
+        return this.gameService.createRoundDataTest(rounds);
     }
 }

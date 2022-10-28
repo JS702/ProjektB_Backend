@@ -1,6 +1,6 @@
 package com.example.ProjektB.domainobject;
 
-import com.example.ProjektB.domainvalue.GameType;
+import com.example.ProjektB.domainvalue.RoundType;
 import lombok.Data;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class Game {
 
-    private GameType gameType;
+    private RoundType gameType;
 
     private int rounds;
 

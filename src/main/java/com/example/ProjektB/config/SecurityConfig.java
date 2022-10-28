@@ -40,15 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-    /*
-     * @Bean
-     * AuthenticationProvider authenticationProvider() {
-     * DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-     * provider.setUserDetailsService(userDetailsService);
-     * provider.setPasswordEncoder(new BCryptPasswordEncoder());
-     * return provider;
-     * }
-     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -64,7 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // Public Routen
                 .antMatchers("/user/create", "/login").permitAll()
                 // User,Admin Routen
-                .antMatchers("/user/**", "/game/**").hasAnyAuthority(UserType.USER.toString(), UserType.ADMIN.toString())
+                .antMatchers("/user/**", "/game/**")
+                .hasAnyAuthority(UserType.USER.toString(), UserType.ADMIN.toString())
                 .anyRequest()
                 .authenticated();
 
