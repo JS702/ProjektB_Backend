@@ -17,4 +17,6 @@ public interface RoundRepository extends MongoRepository<RoundData, String> {
 
     RoundData findByPosition(Position position);
 
+    List<RoundData> getAll();
+
 }

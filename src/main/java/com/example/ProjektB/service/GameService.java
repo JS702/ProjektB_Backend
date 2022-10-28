@@ -54,7 +54,21 @@ public class GameService {
          * }
          * return gameDto;
          */
-        return null;
+
+        List<RoundData> roundDataList = new ArrayList<RoundData>();
+        roundDataList = roundRepository.getAll();
+
+        GameDto gameDto = new GameDto();
+
+        for (int i = 0; i <= rounds; i++) {
+            int randomInt = ThreadLocalRandom.current().nextInt(0, roundDataList.size());
+            
+            gameDto.addRoundDataToList(roundDataList.remove(randomInt));
+        }
+
+        return gameDto;
+
+        //return null;
     }
 
     public RoundData save(RoundData roundData) {
