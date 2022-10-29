@@ -3,6 +3,7 @@ package com.example.ProjektB.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -22,15 +23,17 @@ public class RoundDataService {
 
     public List<RoundData> createRoundDataTest(int rounds) {
 
-        List<RoundData> roundDataList = roundRepository.findByType(RoundType.PUBG);// TODO aus frontend übergeben
-        log.info("Size: {}", roundDataList.size());
+        List<RoundData> allRoundData = roundRepository.findByType(RoundType.PUBG);// TODO aus frontend übergeben
+        //log.info("Size: {}", allRoundData.size());
+        List<RoundData> randomRoundData = new ArrayList<RoundData>();
 
-        while (roundDataList.size() > 5) {
-            int randomInt = ThreadLocalRandom.current().nextInt(0, roundDataList.size());
+        for (int i = 0; i <= rounds; i++) {
+            int randomInt = ThreadLocalRandom.current().nextInt(0, allRoundData.size());
 
-            roundDataList.remove(randomInt);
+            randomRoundData.add(allRoundData.remove(randomInt));
         }
-        return roundDataList;
+
+        return randomRoundData;
     }
 
     public RoundData save(RoundData roundData) {
