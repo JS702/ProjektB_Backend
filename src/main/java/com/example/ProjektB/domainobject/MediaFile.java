@@ -3,23 +3,23 @@ package com.example.ProjektB.domainobject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.example.ProjektB.domainvalue.RoundType;
+import com.example.ProjektB.domainvalue.FileExtension;
+import com.example.ProjektB.domainvalue.MediaFileType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 
 @Data
-@Document(collection = "round")
+@Document(collection = "mediaFile")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RoundData {
+public class MediaFile {
 
     @Id
     private String id;
 
-    private MediaFile picture;
+    private String path;
 
-    private Position position;
+    private MediaFileType type;
 
-    private RoundType type;
-
+    private FileExtension fileExtension;
 }

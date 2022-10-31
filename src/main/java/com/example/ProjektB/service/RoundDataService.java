@@ -24,7 +24,6 @@ public class RoundDataService {
     public List<RoundData> createRoundDataTest(int rounds) {
 
         List<RoundData> allRoundData = roundRepository.findByType(RoundType.PUBG);// TODO aus frontend übergeben
-        //log.info("Size: {}", allRoundData.size());
         List<RoundData> randomRoundData = new ArrayList<RoundData>();
 
         for (int i = 0; i <= rounds; i++) {
