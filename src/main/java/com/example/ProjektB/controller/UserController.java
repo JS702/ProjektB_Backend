@@ -20,10 +20,6 @@ public class UserController {
         return this.userService.getUser(userId);
     }
 
-    @GetMapping("/abc")
-    public String abc() {
-        return "abc";
-    }
 
     @PutMapping("/create")
     public User create(@RequestBody RegistrationData userData) {

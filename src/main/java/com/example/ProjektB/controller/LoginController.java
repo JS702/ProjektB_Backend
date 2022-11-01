@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.ProjektB.domainobject.AuthRequest;
 import com.example.ProjektB.mapper.UserMapper;
 import com.example.ProjektB.pojo.UserDto;
-import com.example.ProjektB.security.JwtTokenProvider;
+import com.example.ProjektB.config.JwtTokenProvider;
 import com.example.ProjektB.service.DefaultUserService;
 
 @RestController

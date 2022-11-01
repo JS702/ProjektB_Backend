@@ -19,8 +19,6 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.example.ProjektB.domainvalue.UserType;
-import com.example.ProjektB.security.JwtAuthenticationEntryPoint;
-import com.example.ProjektB.security.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity

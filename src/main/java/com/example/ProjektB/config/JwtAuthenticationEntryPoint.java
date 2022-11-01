@@ -1,4 +1,4 @@
-package com.example.ProjektB.security;
+package com.example.ProjektB.config;
 
 import java.io.IOException;
 
