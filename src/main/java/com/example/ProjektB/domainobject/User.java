@@ -30,6 +30,5 @@ public class User {
 
     private String description;
 
-    private Score score;
-
+    // Todo für jeden modus ein gameObjekt
 }

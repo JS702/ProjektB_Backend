@@ -15,8 +15,6 @@ public interface RoundRepository extends MongoRepository<RoundData, String> {
     @Query("{ _id: { $in: ?0 } }")
     List<RoundData> findByIds(Set<String> ids);
 
-    RoundData findByPictureName(String pictureName);
-
     RoundData findByPosition(Position position);
 
     List<RoundData> findByType(RoundType type);
