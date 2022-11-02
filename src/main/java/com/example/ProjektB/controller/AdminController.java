@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AdminController {
 
-    private final RoundDataService gameService;
+    private final RoundDataService roundDataService;
 
     @PutMapping("/round_data")
     public RoundData login(@RequestBody RoundData roundData) {
-        return this.gameService.save(roundData);
+        return this.roundDataService.save(roundData);
     }
 }

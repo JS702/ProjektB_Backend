@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class GameController {
 
-    private final RoundDataService gameService;
+    private final RoundDataService roundDataService;
 
     @GetMapping
     public List<RoundData> getGameDto(@RequestParam int rounds) {
-        return this.gameService.createRoundDataTest(rounds);
+        return this.roundDataService.createRoundDataTest(rounds);
     }
 }
