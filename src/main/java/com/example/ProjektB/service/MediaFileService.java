@@ -28,23 +28,24 @@ public class MediaFileService {
     private String destinationPath;
 
     public MediaFile updateProfilePicture(String userId, MultipartFile multipartFile) throws IOException {
-        File file = FileUtils.convertMultipartToFile(destinationPath + "/profilepictures", multipartFile);
-        return this.save( create( file, MediaFileType.PROFILEPICTURE ) );
+        File file = FileUtils.convertMultipartToFile(destinationPath + "profilepictures", multipartFile);
+        return this.save(create(file, MediaFileType.PROFILEPICTURE));
     }
 
     public MediaFile createRoundFile(MultipartFile multipartFile) throws IOException {
-        File file = FileUtils.convertMultipartToFile(destinationPath + "/rounds", multipartFile);
-        return this.save( create( file, MediaFileType.ROUND ) );
+        File file = FileUtils.convertMultipartToFile(destinationPath + "rounds", multipartFile);
+        return this.save(create(file, MediaFileType.ROUND));
     }
-    private MediaFile create(File file, MediaFileType type ){
+
+    private MediaFile create(File file, MediaFileType type) {
         MediaFile mediaFile = new MediaFile();
-        mediaFile.setFileExtension( FilenameUtils.getExtension( file.getName() ) );
-        mediaFile.setType( type );
-        mediaFile.setName( file.getName() );
+        mediaFile.setFileExtension(FilenameUtils.getExtension(file.getName()));
+        mediaFile.setType(type);
+        mediaFile.setName(file.getName());
         return mediaFile;
     }
 
-    private MediaFile save(final MediaFile file){
+    private MediaFile save(final MediaFile file) {
         return this.repository.save(file);
     }
 

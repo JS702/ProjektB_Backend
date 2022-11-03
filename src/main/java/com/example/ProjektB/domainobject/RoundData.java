@@ -16,7 +16,7 @@ public class RoundData {
     @Id
     private String id;
 
-    private MediaFile picture;
+    private String mediaFileId;
 
     private Position position;
 
