@@ -18,17 +18,13 @@ import com.example.ProjektB.service.DefaultUserService;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class LoginController {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
-    @Autowired
-    private JwtTokenProvider jwtTokenProvider;
+    private final JwtTokenProvider jwtTokenProvider;
 
-    @Autowired
-    private DefaultUserService userService;
+    private final DefaultUserService userService;
 
-    @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
 
     @PostMapping
     public UserDto login(@RequestBody AuthRequest authRequest) {

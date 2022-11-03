@@ -3,7 +3,6 @@ package com.example.ProjektB.domainobject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.example.ProjektB.domainvalue.FileExtension;
 import com.example.ProjektB.domainvalue.MediaFileType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -17,9 +16,9 @@ public class MediaFile {
     @Id
     private String id;
 
-    private String path;
+    private String name;
 
     private MediaFileType type;
 
-    private FileExtension fileExtension;
+    private String fileExtension;
 }
