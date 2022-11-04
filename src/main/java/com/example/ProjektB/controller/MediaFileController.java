@@ -1,5 +1,6 @@
 package com.example.ProjektB.controller;
 
+import com.example.ProjektB.domainobject.MediaFile;
 import com.example.ProjektB.service.MediaFileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,11 @@ import java.io.IOException;
 public class MediaFileController {
 
     private final MediaFileService mediaFileService;
+
+    @GetMapping("{id}")
+    public MediaFile get(@PathVariable String id) {
+        return this.mediaFileService.getMediaFile(id);
+    }
 
     @PostMapping("/profilepicture/{userId}")
     public ResponseEntity<Void> updateProfilePicture(@PathVariable String userId,

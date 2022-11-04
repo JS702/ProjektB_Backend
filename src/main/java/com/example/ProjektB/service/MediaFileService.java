@@ -2,6 +2,7 @@ package com.example.ProjektB.service;
 
 import com.example.ProjektB.domainobject.MediaFile;
 import com.example.ProjektB.domainvalue.MediaFileType;
+import com.example.ProjektB.exception.NotFoundException;
 import com.example.ProjektB.repositories.MediaFileRepository;
 import com.example.ProjektB.utils.FileUtils;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+
+import javax.print.attribute.standard.Media;
 
 @Slf4j
 @Service
@@ -35,6 +38,10 @@ public class MediaFileService {
     public MediaFile createRoundFile(MultipartFile multipartFile) throws IOException {
         File file = FileUtils.convertMultipartToFile(destinationPath + "rounds", multipartFile);
         return this.save(create(file, MediaFileType.ROUND));
+    }
+
+    public MediaFile getMediaFile(String id) {
+        return this.repository.findById(id).orElseThrow(NotFoundException::new);
     }
 
     private MediaFile create(File file, MediaFileType type) {
