@@ -1,6 +1,7 @@
 package com.example.ProjektB.controller;
 
 import com.example.ProjektB.domainobject.RoundData;
+import com.example.ProjektB.pojo.RoundDto;
 import com.example.ProjektB.service.RoundDataService;
 import lombok.RequiredArgsConstructor;
 
@@ -15,9 +16,14 @@ import org.springframework.web.bind.annotation.*;
 public class GameController {
 
     private final RoundDataService roundDataService;
-
+    /*
     @GetMapping
     public List<RoundData> getGameDto(@RequestParam int rounds) {
+        return this.roundDataService.createRoundDataTest(rounds);
+    }
+    */
+    @GetMapping
+    public List<RoundDto> getGameDto(@RequestParam int rounds) {
         return this.roundDataService.createRoundDataTest(rounds);
     }
 }
