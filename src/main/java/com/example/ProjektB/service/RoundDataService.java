@@ -24,26 +24,21 @@ public class RoundDataService {
     private final RoundRepository roundRepository;
     private final MediaFileService mediaFileService;
 
-    //public List<RoundData> createRoundDataTest(int rounds) {
     public List<RoundDto> createRoundDataTest(int rounds) {
 
         List<RoundData> allRoundData = roundRepository.findByType(RoundType.PUBG);// TODO aus frontend übergeben
-        //List<RoundData> randomRoundData = new ArrayList<RoundData>();
         List<RoundDto> roundDtos = new ArrayList<RoundDto>();
         
         for (int i = 0; i <= rounds; i++) {
-            //int randomInt = ThreadLocalRandom.current().nextInt(0, allRoundData.size());
-            int randomInt = 0;
+            int randomInt = ThreadLocalRandom.current().nextInt(0, allRoundData.size());
+            
             RoundData randomRound = allRoundData.remove(randomInt);
             MediaFile randomPicture = mediaFileService.getMediaFile(randomRound.getMediaFileId());
 
-            //randomRoundData.add(allRoundData.remove(randomInt));
             roundDtos.add(new RoundDto(randomRound, randomPicture));
         }
-        
-        //return randomRoundData;
+
         return roundDtos;
-        //return allRoundData;
     }
 
     public RoundData save(RoundData roundData) {

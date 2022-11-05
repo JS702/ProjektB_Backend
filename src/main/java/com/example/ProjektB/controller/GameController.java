@@ -16,12 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class GameController {
 
     private final RoundDataService roundDataService;
-    /*
-    @GetMapping
-    public List<RoundData> getGameDto(@RequestParam int rounds) {
-        return this.roundDataService.createRoundDataTest(rounds);
-    }
-    */
+    
     @GetMapping
     public List<RoundDto> getGameDto(@RequestParam int rounds) {
         return this.roundDataService.createRoundDataTest(rounds);
