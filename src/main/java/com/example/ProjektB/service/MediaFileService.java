@@ -46,7 +46,8 @@ public class MediaFileService {
         MediaFile mediaFile = new MediaFile();
         mediaFile.setFileExtension(FilenameUtils.getExtension(file.getName()));
         mediaFile.setType(type);
-        String path = MediaFileType.ROUND.equals( type ) ? "rounds" + file.getName() : "profilepictures" + file.getName();
+        String path = MediaFileType.ROUND.equals(type) ? "rounds/" + file.getName()
+                : "profilepictures/" + file.getName();
         mediaFile.setPath(path);
         return mediaFile;
     }
