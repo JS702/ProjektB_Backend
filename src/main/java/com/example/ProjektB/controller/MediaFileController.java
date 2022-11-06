@@ -20,7 +20,7 @@ public class MediaFileController {
 
     private final DefaultUserService userService;
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public MediaFile get(@PathVariable String id) {
         return this.mediaFileService.getMediaFile(id);
     }
