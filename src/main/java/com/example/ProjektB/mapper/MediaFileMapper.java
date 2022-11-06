@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 @Mapper(componentModel = "spring")
 public interface MediaFileMapper {
 
-    public abstract MediaFile mapDto( MediaFileDto mediaFileDto);
+    public MediaFile mapDto( MediaFileDto mediaFileDto);
 
-    public abstract MediaFileDto mapToDto( MediaFile mediaFile);
+    public MediaFileDto mapToDto( MediaFile mediaFile);
 
 }
