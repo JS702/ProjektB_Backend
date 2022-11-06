@@ -16,8 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 
-import javax.print.attribute.standard.Media;
-
 @Slf4j
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -48,7 +46,8 @@ public class MediaFileService {
         MediaFile mediaFile = new MediaFile();
         mediaFile.setFileExtension(FilenameUtils.getExtension(file.getName()));
         mediaFile.setType(type);
-        mediaFile.setName(file.getName());
+        String path = MediaFileType.ROUND.equals( type ) ? "rounds" + file.getName() : "profilepictures" + file.getName();
+        mediaFile.setPath(path);
         return mediaFile;
     }
 

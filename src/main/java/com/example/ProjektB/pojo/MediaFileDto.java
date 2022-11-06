@@ -8,8 +8,6 @@ public class MediaFileDto {
 
     private String id;
 
-    private String name;
-
     private String path;
 
     private MediaFileType type;

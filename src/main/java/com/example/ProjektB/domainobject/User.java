@@ -30,5 +30,7 @@ public class User {
 
     private String description;
 
+    private String profilePictureId;
+
     // Todo für jeden modus ein gameObjekt
 }

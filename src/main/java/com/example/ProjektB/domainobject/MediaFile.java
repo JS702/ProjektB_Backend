@@ -16,7 +16,7 @@ public class MediaFile {
     @Id
     private String id;
 
-    private String name;
+    private String path;
 
     private MediaFileType type;
 

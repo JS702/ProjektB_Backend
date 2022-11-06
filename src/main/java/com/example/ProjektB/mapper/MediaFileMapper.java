@@ -15,7 +15,7 @@ public abstract class MediaFileMapper {
 
     public abstract MediaFile mapDto( MediaFileDto mediaFileDto);
 
-    @Mapping(target = "path", expression = "java(getPath() + mediaFile.getName())")
+    @Mapping(target = "path", expression = "java(getPath() + mediaFile.getPath())")
     public abstract MediaFileDto mapToDto( MediaFile mediaFile);
 
 
