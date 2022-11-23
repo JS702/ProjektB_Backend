@@ -13,4 +13,5 @@ public class MediaFileDto {
     private MediaFileType type;
 
     private String fileExtension;
+
 }

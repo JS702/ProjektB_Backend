@@ -9,21 +9,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/user")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequestMapping( value = "/user" )
+@RequiredArgsConstructor( onConstructor = @__( @Autowired ) )
 public class UserController {
 
     private final DefaultUserService userService;
 
-    @GetMapping("/{userId}")
-    public User getUser(@PathVariable String userId) {
-        return this.userService.getUser(userId);
+    @GetMapping( "/{userId}" )
+    public User getUser( @PathVariable String userId ) {
+        return this.userService.getUser( userId );
     }
 
 
-    @PutMapping("/create")
-    public User create(@RequestBody RegistrationData userData) {
-        return this.userService.createUser(userData, UserType.USER);
+    @PutMapping( "/create" )
+    public User create( @RequestBody RegistrationData userData ) {
+        return this.userService.createUser( userData, UserType.USER );
     }
 
 }

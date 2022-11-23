@@ -6,9 +6,10 @@ import com.example.ProjektB.domainobject.RoundData;
 public class RoundDto {
 
     private RoundData roundData;
+
     private MediaFile mediaFile;
 
-    public RoundDto(RoundData roundData, MediaFile mediaFile) {
+    public RoundDto( RoundData roundData, MediaFile mediaFile ) {
         this.roundData = roundData;
         this.mediaFile = mediaFile;
     }
@@ -21,11 +22,11 @@ public class RoundDto {
         return mediaFile;
     }
 
-    public void setRoundData(RoundData roundData) {
+    public void setRoundData( RoundData roundData ) {
         this.roundData = roundData;
     }
 
-    public void setMediaFile(MediaFile mediaFile) {
+    public void setMediaFile( MediaFile mediaFile ) {
         this.mediaFile = mediaFile;
     }
 

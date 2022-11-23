@@ -1,15 +1,14 @@
 package com.example.ProjektB.mapper;
 
-import org.mapstruct.Mapper;
-
 import com.example.ProjektB.domainobject.User;
 import com.example.ProjektB.pojo.UserDto;
+import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
+@Mapper( componentModel = "spring" )
 public interface UserMapper {
 
-    User mapDto(UserDto userDto);
+    User mapDto( UserDto userDto );
 
-    UserDto mapToDto(User user);
+    UserDto mapToDto( User user );
 
 }

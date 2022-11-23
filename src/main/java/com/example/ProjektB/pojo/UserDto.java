@@ -1,7 +1,6 @@
 package com.example.ProjektB.pojo;
 
 import com.example.ProjektB.domainvalue.UserType;
-
 import lombok.Data;
 
 @Data

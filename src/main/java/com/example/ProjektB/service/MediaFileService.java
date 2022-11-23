@@ -72,11 +72,12 @@ public class MediaFileService {
         return this.repository.save( file );
     }
 
-    private String getPathForFrontend(File file, MediaFileType type){
-        return this.frontendPath + (MediaFileType.ROUND.equals( type ) ? "rounds/" + file.getName() : "profilepictures/" + file.getName());
+    private String getPathForFrontend( File file, MediaFileType type ) {
+        return this.frontendPath + ( MediaFileType.ROUND.equals( type ) ? "rounds/" + file.getName() : "profilepictures/" + file.getName() );
     }
 
-    private String getPathForFrontend(MediaFileType type){
-        return this.destinationPath + this.frontendPath + (MediaFileType.ROUND.equals( type ) ? "rounds/" : "profilepictures/" );
+    private String getPathForFrontend( MediaFileType type ) {
+        return this.destinationPath + this.frontendPath + ( MediaFileType.ROUND.equals( type ) ? "rounds/" : "profilepictures/" );
     }
+
 }
