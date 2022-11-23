@@ -5,8 +5,10 @@ import lombok.Data;
 @Data
 public class Score {
 
-    private Integer bestScore;
+    private Integer score;
 
     private Float averageDistance;
+
+    private Float averageTime;
 
 }

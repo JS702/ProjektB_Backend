@@ -1,6 +1,7 @@
 package com.example.ProjektB.service;
 
 import com.example.ProjektB.domainobject.RegistrationData;
+import com.example.ProjektB.domainobject.Score;
 import com.example.ProjektB.domainobject.User;
 import com.example.ProjektB.domainvalue.UserType;
 import com.example.ProjektB.exception.NotFoundException;
@@ -45,9 +46,10 @@ public class DefaultUserService {
             throw new IllegalStateException( "Username is already taken!" );
         }
         User user = new User();
-
         user.setType( type );
         user.setPassword( this.passwordEncoder.encode( userData.getPassword() ) );
+        setScores( user );
+
         return saveUser( user );
     }
 
@@ -60,6 +62,15 @@ public class DefaultUserService {
     private User saveUser( final User user ) {
         log.info( "Saving user..." );
         return this.userRepo.save( user );
+    }
+
+
+    private void setScores( final User user ) {
+        Score defaultScore = new Score();
+        defaultScore.setScore( 0 );
+        user.setFirstModeScore( defaultScore );
+        user.setSecondModeScore( defaultScore );
+        user.setThirdModeScore( defaultScore );
     }
 
 }

@@ -10,12 +10,12 @@ import java.util.List;
 @Data
 public class GameDto {
 
-    private RoundType gameType;
-
-    private Integer gamesPlayed;
+    private RoundType roundType;
 
     private List<MediaFile> pictures;
 
     private Score score;
+
+    private String userId;
 
 }

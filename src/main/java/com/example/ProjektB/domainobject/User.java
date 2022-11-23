@@ -30,5 +30,10 @@ public class User {
 
     private String profilePictureId;
 
-    // Todo für jeden modus ein gameObjekt
+    private Score firstModeScore;
+
+    private Score secondModeScore;
+
+    private Score thirdModeScore;
+
 }
