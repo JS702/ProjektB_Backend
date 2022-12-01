@@ -1,10 +1,10 @@
 package com.example.ProjektB.controller;
 
-import com.example.ProjektB.domainobject.RoundData;
+import com.example.ProjektB.domainobject.Round;
 import com.example.ProjektB.mapper.MediaFileMapper;
 import com.example.ProjektB.pojo.MediaFileDto;
 import com.example.ProjektB.service.MediaFileService;
-import com.example.ProjektB.service.RoundDataService;
+import com.example.ProjektB.service.RoundService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +22,15 @@ import java.io.IOException;
 @RequiredArgsConstructor( onConstructor = @__( @Autowired ) )
 public class AdminController {
 
-    private final RoundDataService roundDataService;
+    private final RoundService roundService;
 
     private final MediaFileService mediaFileService;
 
     private final MediaFileMapper mediaFileMapper;
 
     @PutMapping( "/round_data" )
-    public RoundData createRoundData( @RequestBody RoundData roundData ) {
-        return this.roundDataService.save( roundData );
+    public Round createRoundData( @RequestBody Round round ) {
+        return this.roundService.save( round );
     }
 
     @PutMapping( "/round_file" )

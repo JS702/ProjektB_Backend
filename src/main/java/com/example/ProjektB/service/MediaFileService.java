@@ -16,6 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Slf4j
 @Service
@@ -58,6 +61,12 @@ public class MediaFileService {
     public MediaFile getMediaFile( String id ) {
         log.info( "Looking for mediaFileId: {}", id );
         return this.repository.findById( id ).orElseThrow( NotFoundException::new );
+    }
+
+    public List<MediaFile> getMediaFileList( List<String> mediaFiles ) {
+        Set<String> mediaFilesSet = new HashSet<>( mediaFiles );
+        log.info( "Looking for {} mediaFiles", mediaFilesSet.size() );
+        return this.repository.findByIds( mediaFilesSet );
     }
 
     private MediaFile create( File file, MediaFileType type ) {

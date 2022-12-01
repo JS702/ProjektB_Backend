@@ -1,6 +1,6 @@
 package com.example.ProjektB.domainobject;
 
-import com.example.ProjektB.domainvalue.RoundType;
+import com.example.ProjektB.domainvalue.GameMode;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,9 +12,11 @@ import java.util.List;
 @JsonInclude( JsonInclude.Include.NON_NULL )
 public class Game {
 
-    private RoundType roundType;
+    private String id;
 
-    private List<String> picturesIds;
+    private GameMode gameMode;
+
+    private List<String> roundIds;
 
     private Score score;
 

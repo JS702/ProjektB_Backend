@@ -7,8 +7,8 @@ import org.mapstruct.Mapper;
 @Mapper( componentModel = "spring" )
 public interface MediaFileMapper {
 
-    public MediaFile mapDto( MediaFileDto mediaFileDto );
+    MediaFile mapDto( MediaFileDto mediaFileDto );
 
-    public MediaFileDto mapToDto( MediaFile mediaFile );
+    MediaFileDto mapToDto( MediaFile mediaFile );
 
 }

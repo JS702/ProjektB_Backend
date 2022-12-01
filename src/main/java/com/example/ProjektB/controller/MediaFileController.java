@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping( value = "/mediafile" )
@@ -23,6 +24,11 @@ public class MediaFileController {
     @GetMapping( "/{id}" )
     public MediaFile get( @PathVariable String id ) {
         return this.mediaFileService.getMediaFile( id );
+    }
+
+    @PostMapping( "/list" )
+    public List<MediaFile> getList( @RequestBody List<String> ids ) {
+        return this.mediaFileService.getMediaFileList( ids );
     }
 
     @PostMapping( "/profilepicture/{userId}" )

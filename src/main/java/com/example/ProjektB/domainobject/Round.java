@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @Document( collection = "round" )
 @JsonInclude( JsonInclude.Include.NON_NULL )
-public class RoundData {
+public class Round {
 
     @Id
     private String id;
