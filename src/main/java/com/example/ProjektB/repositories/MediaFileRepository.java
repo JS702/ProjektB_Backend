@@ -9,7 +9,7 @@ import java.util.Set;
 
 public interface MediaFileRepository extends MongoRepository<MediaFile, String> {
 
-    @Query( "{ id: { $in: ?0 } }" )
+    @Query( "{ _id: { $in: ?0 } }" )
     List<MediaFile> findByIds( Set<String> ids );
 
 }

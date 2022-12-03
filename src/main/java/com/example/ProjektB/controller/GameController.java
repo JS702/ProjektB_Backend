@@ -1,6 +1,7 @@
 package com.example.ProjektB.controller;
 
 import com.example.ProjektB.domainobject.Game;
+import com.example.ProjektB.domainobject.RoundWrapper;
 import com.example.ProjektB.service.GameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class GameController {
     private final GameService gameService;
 
     @GetMapping
-    public Game getRounds( @RequestParam int rounds ) {
-        return this.gameService.createGame( rounds );
+    public RoundWrapper getRounds( @RequestParam int rounds ) {
+        return this.gameService.createRoundWrapper( rounds );
     }
 
     @PostMapping

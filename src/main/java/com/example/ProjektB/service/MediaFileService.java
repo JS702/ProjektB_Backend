@@ -63,8 +63,8 @@ public class MediaFileService {
         return this.repository.findById( id ).orElseThrow( NotFoundException::new );
     }
 
-    public List<MediaFile> getMediaFileList( List<String> mediaFiles ) {
-        Set<String> mediaFilesSet = new HashSet<>( mediaFiles );
+    public List<MediaFile> getMediaFileList( List<String> mediaFileIds ) {
+        Set<String> mediaFilesSet = new HashSet<>( mediaFileIds );
         log.info( "Looking for {} mediaFiles", mediaFilesSet.size() );
         return this.repository.findByIds( mediaFilesSet );
     }
