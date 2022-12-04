@@ -1,7 +1,7 @@
 package com.example.ProjektB.controller;
 
 import com.example.ProjektB.domainobject.Game;
-import com.example.ProjektB.domainobject.GameDto;
+import com.example.ProjektB.pojo.GameDto;
 import com.example.ProjektB.service.GameService;
 import com.example.ProjektB.service.UserService;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.example.ProjektB.domainobject;
+package com.example.ProjektB.pojo;
 
 import lombok.Data;
 

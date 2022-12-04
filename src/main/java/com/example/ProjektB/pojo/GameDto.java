@@ -1,7 +1,7 @@
 package com.example.ProjektB.pojo;
 
-import com.example.ProjektB.domainobject.Score;
-import com.example.ProjektB.domainvalue.GameMode;
+import com.example.ProjektB.domainobject.MediaFile;
+import com.example.ProjektB.domainobject.Round;
 import lombok.Data;
 
 import java.util.List;
@@ -9,14 +9,8 @@ import java.util.List;
 @Data
 public class GameDto {
 
-    private String id;
+    private List<Round> rounds;
 
-    private GameMode gameMode;
-
-    private List<String> roundIds;
-
-    private Score score;
-
-    private String userId;
+    private List<MediaFile> mediaFiles;
 
 }

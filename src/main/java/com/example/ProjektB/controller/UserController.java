@@ -1,8 +1,8 @@
 package com.example.ProjektB.controller;
 
-import com.example.ProjektB.domainobject.RegistrationData;
 import com.example.ProjektB.domainobject.User;
 import com.example.ProjektB.domainvalue.UserType;
+import com.example.ProjektB.pojo.RegistrationData;
 import com.example.ProjektB.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

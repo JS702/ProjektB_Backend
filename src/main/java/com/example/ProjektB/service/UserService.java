@@ -1,10 +1,10 @@
 package com.example.ProjektB.service;
 
-import com.example.ProjektB.domainobject.RegistrationData;
-import com.example.ProjektB.domainobject.Score;
 import com.example.ProjektB.domainobject.User;
 import com.example.ProjektB.domainvalue.UserType;
 import com.example.ProjektB.exception.NotFoundException;
+import com.example.ProjektB.pojo.RegistrationData;
+import com.example.ProjektB.pojo.Score;
 import com.example.ProjektB.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

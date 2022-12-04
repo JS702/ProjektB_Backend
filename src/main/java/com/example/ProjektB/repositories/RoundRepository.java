@@ -1,8 +1,8 @@
 package com.example.ProjektB.repositories;
 
-import com.example.ProjektB.domainobject.Position;
 import com.example.ProjektB.domainobject.Round;
 import com.example.ProjektB.domainvalue.RoundType;
+import com.example.ProjektB.pojo.Position;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

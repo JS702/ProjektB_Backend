@@ -1,4 +1,4 @@
-package com.example.ProjektB.domainobject;
+package com.example.ProjektB.pojo;
 
 import com.example.ProjektB.domainvalue.GameMode;
 import lombok.Data;

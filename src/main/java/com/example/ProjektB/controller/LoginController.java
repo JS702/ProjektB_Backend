@@ -1,8 +1,8 @@
 package com.example.ProjektB.controller;
 
 import com.example.ProjektB.config.JwtTokenProvider;
-import com.example.ProjektB.domainobject.AuthRequest;
 import com.example.ProjektB.mapper.UserMapper;
+import com.example.ProjektB.pojo.AuthRequest;
 import com.example.ProjektB.pojo.UserDto;
 import com.example.ProjektB.service.UserService;
 import lombok.RequiredArgsConstructor;

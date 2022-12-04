@@ -1,9 +1,9 @@
 package com.example.ProjektB.service;
 
 import com.example.ProjektB.domainobject.Game;
-import com.example.ProjektB.domainobject.GameDto;
 import com.example.ProjektB.domainobject.MediaFile;
 import com.example.ProjektB.domainobject.Round;
+import com.example.ProjektB.pojo.GameDto;
 import com.example.ProjektB.repositories.GameRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

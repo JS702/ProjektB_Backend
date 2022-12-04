@@ -1,6 +1,7 @@
 package com.example.ProjektB.domainobject;
 
 import com.example.ProjektB.domainvalue.RoundType;
+import com.example.ProjektB.pojo.Position;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import org.springframework.data.annotation.Id;

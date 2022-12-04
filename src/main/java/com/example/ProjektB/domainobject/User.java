@@ -2,6 +2,7 @@ package com.example.ProjektB.domainobject;
 
 import com.example.ProjektB.domainvalue.GameMode;
 import com.example.ProjektB.domainvalue.UserType;
+import com.example.ProjektB.pojo.Score;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
