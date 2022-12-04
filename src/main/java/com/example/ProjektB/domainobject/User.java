@@ -1,11 +1,15 @@
 package com.example.ProjektB.domainobject;
 
+import com.example.ProjektB.domainvalue.GameMode;
 import com.example.ProjektB.domainvalue.UserType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
+import java.util.Optional;
 
 @Data
 @Document( collection = "user" )
@@ -30,10 +34,10 @@ public class User {
 
     private String profilePictureId;
 
-    private Score firstModeScore;
+    private List<Score> scores;
 
-    private Score secondModeScore;
-
-    private Score thirdModeScore;
+    public Optional<Score> getScoreByGameMode( GameMode gameMode ) {
+        return this.scores.stream().filter( gameMode::equals ).findFirst();
+    }
 
 }

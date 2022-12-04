@@ -12,10 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor( onConstructor = @__( @Autowired ) )
-public class DefaultUserService {
+public class UserService {
 
     private final UserRepository userRepo;
 
@@ -48,7 +51,7 @@ public class DefaultUserService {
         User user = new User();
         user.setType( type );
         user.setPassword( this.passwordEncoder.encode( userData.getPassword() ) );
-        setScores( user );
+        user.setScores( new ArrayList<>() );
 
         return saveUser( user );
     }
@@ -65,12 +68,18 @@ public class DefaultUserService {
     }
 
 
-    private void setScores( final User user ) {
-        Score defaultScore = new Score();
-        defaultScore.setScore( 0 );
-        user.setFirstModeScore( defaultScore );
-        user.setSecondModeScore( defaultScore );
-        user.setThirdModeScore( defaultScore );
+    public User setScore( final String userId, final Score newScore ) {
+        User user = getUser( userId );
+        Optional<Score> score = user.getScoreByGameMode( newScore.getGameMode() );
+        if ( !score.isPresent() ) {
+            user.getScores().add( newScore );
+            this.saveUser( user );
+        } else if ( score.get().getScore() < newScore.getScore() ) {
+            user.getScores().remove( score.get() );
+            user.getScores().add( newScore );
+            this.saveUser( user );
+        }
+        return user;
     }
 
 }

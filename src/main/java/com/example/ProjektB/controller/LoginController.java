@@ -4,7 +4,7 @@ import com.example.ProjektB.config.JwtTokenProvider;
 import com.example.ProjektB.domainobject.AuthRequest;
 import com.example.ProjektB.mapper.UserMapper;
 import com.example.ProjektB.pojo.UserDto;
-import com.example.ProjektB.service.DefaultUserService;
+import com.example.ProjektB.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,7 +24,7 @@ public class LoginController {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    private final DefaultUserService userService;
+    private final UserService userService;
 
     private final UserMapper userMapper;
 

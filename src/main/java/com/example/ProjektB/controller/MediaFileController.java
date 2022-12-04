@@ -2,8 +2,8 @@ package com.example.ProjektB.controller;
 
 import com.example.ProjektB.domainobject.MediaFile;
 import com.example.ProjektB.domainobject.User;
-import com.example.ProjektB.service.DefaultUserService;
 import com.example.ProjektB.service.MediaFileService;
+import com.example.ProjektB.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +19,7 @@ public class MediaFileController {
 
     private final MediaFileService mediaFileService;
 
-    private final DefaultUserService userService;
+    private final UserService userService;
 
     @GetMapping( "/{id}" )
     public MediaFile get( @PathVariable String id ) {

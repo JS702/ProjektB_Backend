@@ -25,7 +25,7 @@ import java.util.Set;
 @RequiredArgsConstructor( onConstructor = @__( @Autowired ) )
 public class MediaFileService {
 
-    private final DefaultUserService userService;
+    private final UserService userService;
 
     private final MediaFileRepository repository;
 

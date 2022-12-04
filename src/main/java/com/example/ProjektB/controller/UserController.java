@@ -3,7 +3,7 @@ package com.example.ProjektB.controller;
 import com.example.ProjektB.domainobject.RegistrationData;
 import com.example.ProjektB.domainobject.User;
 import com.example.ProjektB.domainvalue.UserType;
-import com.example.ProjektB.service.DefaultUserService;
+import com.example.ProjektB.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor( onConstructor = @__( @Autowired ) )
 public class UserController {
 
-    private final DefaultUserService userService;
+    private final UserService userService;
 
     @GetMapping( "/{userId}" )
     public User getUser( @PathVariable String userId ) {
