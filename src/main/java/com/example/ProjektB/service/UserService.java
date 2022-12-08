@@ -4,16 +4,12 @@ import com.example.ProjektB.domainobject.User;
 import com.example.ProjektB.domainvalue.UserType;
 import com.example.ProjektB.exception.NotFoundException;
 import com.example.ProjektB.pojo.RegistrationData;
-import com.example.ProjektB.pojo.Score;
 import com.example.ProjektB.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -51,7 +47,6 @@ public class UserService {
         User user = new User();
         user.setType( type );
         user.setPassword( this.passwordEncoder.encode( userData.getPassword() ) );
-        user.setScores( new ArrayList<>() );
 
         return saveUser( user );
     }
@@ -65,21 +60,6 @@ public class UserService {
     private User saveUser( final User user ) {
         log.info( "Saving user..." );
         return this.userRepo.save( user );
-    }
-
-
-    public User setScore( final String userId, final Score newScore ) {
-        User user = getUser( userId );
-        Optional<Score> score = user.getScoreByGameMode( newScore.getGameMode() );
-        if ( !score.isPresent() ) {
-            user.getScores().add( newScore );
-            this.saveUser( user );
-        } else if ( score.get().getScore() < newScore.getScore() ) {
-            user.getScores().remove( score.get() );
-            user.getScores().add( newScore );
-            this.saveUser( user );
-        }
-        return user;
     }
 
 }
