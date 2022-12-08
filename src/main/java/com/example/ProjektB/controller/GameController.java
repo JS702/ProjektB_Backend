@@ -25,7 +25,7 @@ public class GameController {
         return this.gameService.getGameDto( rounds );
     }
 
-    @GetMapping
+    @GetMapping( "/leaderboard" )
     public List<LeaderboardEntry> getScoreLeaderboard( @RequestParam GameMode gameMode ) {
         return this.gameService.getScoreLeaderboard( gameMode );
     }
