@@ -19,4 +19,7 @@ public interface GameRepository extends MongoRepository<Game, String> {
     @Query( "{ _id: { $in: ?0 } }" )
     List<Game> findByIds( Set<String> ids );
 
+    @Query( value = "{$and: [{userId:  {$eq: ?0}}, {gameMode:  {$eq: ?1}}]}", sort = "{'score.score': 1}" )
+    Stream<Game> findAllByUserIdAndGameMode( String userId, GameMode gameMode );
+
 }

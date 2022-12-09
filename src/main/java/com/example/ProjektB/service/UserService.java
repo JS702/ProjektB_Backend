@@ -35,6 +35,7 @@ public class UserService {
         return user;
     }
 
+
     public User createUser( final RegistrationData userData, final UserType type ) {
 
         if ( this.userRepo.findByEmail( userData.getEmail() ) != null ) {

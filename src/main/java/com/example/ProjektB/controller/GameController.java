@@ -17,7 +17,6 @@ import java.util.List;
 @RequiredArgsConstructor( onConstructor = @__( @Autowired ) )
 public class GameController {
 
-
     private final GameService gameService;
 
     @GetMapping

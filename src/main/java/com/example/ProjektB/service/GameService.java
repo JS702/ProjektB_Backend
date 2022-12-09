@@ -7,6 +7,7 @@ import com.example.ProjektB.domainobject.User;
 import com.example.ProjektB.domainvalue.GameMode;
 import com.example.ProjektB.pojo.GameDto;
 import com.example.ProjektB.pojo.LeaderboardEntry;
+import com.example.ProjektB.pojo.ProfileDto;
 import com.example.ProjektB.repositories.GameRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -47,9 +49,33 @@ public class GameService {
         return leaderboardEntries;
     }
 
+    public ProfileDto getProfile( final String userId ) {
+        log.info( "Looking for user: {}", userId );
+        Optional<Game> game1 = this.gameRepository.findAllByUserIdAndGameMode( userId, GameMode.CASUAL ).findFirst();
+        Optional<Game> game2 = this.gameRepository.findAllByUserIdAndGameMode( userId, GameMode.ROUNDTIME ).findFirst();
+        Optional<Game> game3 = this.gameRepository.findAllByUserIdAndGameMode( userId, GameMode.TOTALTIME ).findFirst();
+        Long gamesPlayed1 = this.gameRepository.findAllByUserIdAndGameMode( userId, GameMode.CASUAL ).count();
+        Long gamesPlayed2 = this.gameRepository.findAllByUserIdAndGameMode( userId, GameMode.ROUNDTIME ).count();
+        Long gamesPlayed3 = this.gameRepository.findAllByUserIdAndGameMode( userId, GameMode.TOTALTIME ).count();
+        ProfileDto profileDto =
+                new ProfileDto( getScoreFromGame( game1 ), getScoreFromGame( game2 ), getScoreFromGame( game3 ), gamesPlayed1, gamesPlayed2,
+                        gamesPlayed3 );
+        return profileDto;
+    }
+
+    private Integer getScoreFromGame( Optional<Game> game ) {
+        if ( !game.isPresent() || game.get().getScore() == null ) {
+            return null;
+        } else {
+            return game.get().getScore().getScore();
+        }
+    }
+
+
     public Game save( Game game ) {
         return this.gameRepository.save( game );
     }
+
 
     private List<MediaFile> getMediaFiles( List<Round> rounds ) {
         List<String> ids = rounds.stream().map( round -> round.getMediaFileId() ).collect( Collectors.toList() );
