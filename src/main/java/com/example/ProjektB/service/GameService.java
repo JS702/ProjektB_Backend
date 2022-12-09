@@ -50,7 +50,6 @@ public class GameService {
     }
 
     public ProfileDto getProfile( final String userId ) {
-        log.info( "Looking for user: {}", userId );
         Optional<Game> game1 = this.gameRepository.findAllByUserIdAndGameMode( userId, GameMode.CASUAL ).findFirst();
         Optional<Game> game2 = this.gameRepository.findAllByUserIdAndGameMode( userId, GameMode.ROUNDTIME ).findFirst();
         Optional<Game> game3 = this.gameRepository.findAllByUserIdAndGameMode( userId, GameMode.TOTALTIME ).findFirst();
@@ -84,12 +83,17 @@ public class GameService {
 
     private void createLeaderboardEntry( Game game, List<LeaderboardEntry> targetList ) {
         LeaderboardEntry leaderboardEntry = new LeaderboardEntry();
-        User user = this.userService.getUser( game.getUserId() );
-        leaderboardEntry.setUsername( user.getUsername() );
-        leaderboardEntry.setScore( game.getScore().getScore() );
-        Long gamesPlayed = this.gameRepository.findAllByUserId( user.getId() ).count();
-        leaderboardEntry.setGamesPlayed( gamesPlayed );
-        targetList.add( leaderboardEntry );
+        if ( game != null ) {
+            User user = this.userService.getUser( game.getUserId() );
+            leaderboardEntry.setUsername( user.getUsername() );
+            if ( game.getScore() != null ) {
+                leaderboardEntry.setScore( game.getScore().getScore() );
+            }
+            Long gamesPlayed = this.gameRepository.findAllByUserId( user.getId() ).count();
+            leaderboardEntry.setGamesPlayed( gamesPlayed );
+            targetList.add( leaderboardEntry );
+        }
+
     }
 
 }

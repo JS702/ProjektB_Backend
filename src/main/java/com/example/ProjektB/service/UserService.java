@@ -3,6 +3,7 @@ package com.example.ProjektB.service;
 import com.example.ProjektB.domainobject.User;
 import com.example.ProjektB.domainvalue.UserType;
 import com.example.ProjektB.exception.NotFoundException;
+import com.example.ProjektB.pojo.ProfileData;
 import com.example.ProjektB.pojo.RegistrationData;
 import com.example.ProjektB.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -49,6 +50,14 @@ public class UserService {
         user.setType( type );
         user.setPassword( this.passwordEncoder.encode( userData.getPassword() ) );
 
+        return saveUser( user );
+    }
+
+    public User update( final String userId, final ProfileData profileData ) {
+        User user = getUser( userId );
+        user.setUsername( profileData.getUsername() );
+        user.setEmail( profileData.getEmail() );
+        user.setDescription( profileData.getDescription() );
         return saveUser( user );
     }
 
