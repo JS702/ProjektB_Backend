@@ -43,8 +43,16 @@ public class GameService {
     }
 
     public List<LeaderboardEntry> getScoreLeaderboard( GameMode gameMode ) {
+        //Bisschen hässlich gemacht, aber mir ist auf die schnelle nix eingefallen
         List<LeaderboardEntry> leaderboardEntries = new ArrayList<>();
-        List<Game> games = this.gameRepository.findAllByGameMode( gameMode ).limit( 10 ).collect( Collectors.toList() );
+        List<Game> games = new ArrayList<>();
+        List<String> userIds = new ArrayList<>();
+        this.gameRepository.findAllByGameMode( gameMode ).limit( 15 ).forEach( game -> {
+            if ( !userIds.contains( game.getUserId() ) ) {
+                games.add( game );
+                userIds.add( game.getUserId() );
+            }
+        } );
         games.forEach( game -> createLeaderboardEntry( game, leaderboardEntries ) );
         return leaderboardEntries;
     }
@@ -81,6 +89,7 @@ public class GameService {
         return this.mediaFileService.getMediaFileList( ids );
     }
 
+    //TODO für gamesPlayed wird keine eigene Suche gestartet
     private void createLeaderboardEntry( Game game, List<LeaderboardEntry> targetList ) {
         LeaderboardEntry leaderboardEntry = new LeaderboardEntry();
         if ( game != null ) {
