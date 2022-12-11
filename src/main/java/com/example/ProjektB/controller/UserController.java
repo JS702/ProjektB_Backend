@@ -25,6 +25,11 @@ public class UserController {
         return this.userService.getUser( userId );
     }
 
+    @GetMapping
+    public User getUserByName( @RequestParam String userName ) {
+        return this.userService.getUserByUsername( userName );
+    }
+
     @GetMapping( "/profile/{userId}" )
     public ProfileDto getProfile( @PathVariable String userId ) {
         return this.gameService.getProfile( userId );
