@@ -50,7 +50,7 @@ public class UserService {
         user.setType( type );
         user.setPassword( this.passwordEncoder.encode( userData.getPassword() ) );
         user.setUsername( userData.getUsername() );
-        user.setEmail( user.getEmail() );
+        user.setEmail( userData.getEmail() );
 
         return saveUser( user );
     }
