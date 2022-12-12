@@ -49,6 +49,8 @@ public class UserService {
         User user = new User();
         user.setType( type );
         user.setPassword( this.passwordEncoder.encode( userData.getPassword() ) );
+        user.setUsername( userData.getUsername() );
+        user.setEmail( user.getEmail() );
 
         return saveUser( user );
     }
