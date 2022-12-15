@@ -9,6 +9,7 @@ import com.example.ProjektB.service.GameService;
 import com.example.ProjektB.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,7 +22,7 @@ public class UserController {
     private final GameService gameService;
 
     @GetMapping( "/{userId}" )
-    public User getUser( @PathVariable String userId ) {
+    public User getUserById( @PathVariable String userId ) {
         return this.userService.getUser( userId );
     }
 
@@ -44,6 +45,12 @@ public class UserController {
     @PostMapping( "/update/{userId}" )
     public User update( @PathVariable String userId, @RequestBody ProfileData userData ) {
         return this.userService.update( userId, userData );
+    }
+
+    @DeleteMapping( "{userId}" )
+    public ResponseEntity<Void> deleteUser( @PathVariable String userId ) {
+        this.userService.delete( userId );
+        return ResponseEntity.ok().build();
     }
 
 }

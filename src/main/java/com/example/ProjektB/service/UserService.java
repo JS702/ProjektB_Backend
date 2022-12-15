@@ -29,7 +29,7 @@ public class UserService {
 
     public User getUserByUsername( final String username ) {
         log.info( "Looking for user: {}", username );
-        final User user = this.userRepo.findByUsername( username );
+        final User user = this.userRepo.findByUsernameAndDeletedIsFalse( username );
         if ( user == null ) {
             throw new NotFoundException();
         }
@@ -39,11 +39,11 @@ public class UserService {
 
     public User createUser( final RegistrationData userData, final UserType type ) {
 
-        if ( this.userRepo.findByEmail( userData.getEmail() ) != null ) {
+        if ( this.userRepo.findByEmailAndDeletedIsFalse( userData.getEmail() ) != null ) {
             throw new IllegalStateException( "Email is already taken!" );
         }
 
-        if ( this.userRepo.findByUsername( userData.getUsername() ) != null ) {
+        if ( this.userRepo.findByUsernameAndDeletedIsFalse( userData.getUsername() ) != null ) {
             throw new IllegalStateException( "Username is already taken!" );
         }
         User user = new User();
@@ -61,6 +61,13 @@ public class UserService {
         user.setEmail( profileData.getEmail() );
         user.setDescription( profileData.getDescription() );
         return saveUser( user );
+    }
+
+    public void delete( String userId ) {
+        User user = getUser( userId );
+        user.setUsername( "Deleted User" );
+        user.setDeleted( true );
+        saveUser( user );
     }
 
     public User updateProfilePicture( String userId, String profilePictureId ) {
