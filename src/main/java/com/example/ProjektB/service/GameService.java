@@ -98,7 +98,7 @@ public class GameService {
             if ( game.getScore() != null ) {
                 leaderboardEntry.setScore( game.getScore().getScore() );
             }
-            Long gamesPlayed = this.gameRepository.findAllByUserId( user.getId() ).count();
+            Long gamesPlayed = this.gameRepository.findAllByUserIdAndGameMode( user.getId(), game.getGameMode() ).count();
             leaderboardEntry.setGamesPlayed( gamesPlayed );
             targetList.add( leaderboardEntry );
         }
